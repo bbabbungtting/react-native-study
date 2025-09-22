@@ -1,0 +1,39 @@
+import {colors} from '@/constants/color';
+import React from 'react';
+import {StyleSheet, Text, TextInput, TextInputProps, View} from 'react-native';
+
+interface InputFiedlProps extends TextInputProps {
+  error?: string;
+}
+
+export default function InputField({error, ...props}: InputFiedlProps) {
+  return (
+    <View>
+      <TextInput
+        style={[styles.input, Boolean(error) && styles.inputError]}
+        {...props}
+      />
+      {Boolean(error) && <Text style={styles.error}>{error}</Text>}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  input: {
+    borderWidth: 1,
+    borderColor: 'gray',
+    height: 50,
+    paddingHorizontal: 10,
+    fontSize: 16,
+    color: colors.BLACK,
+  },
+  inputError: {
+    borderWidth: 1,
+    borderColor: 'red',
+  },
+  error: {
+    color: 'red',
+    fontSize: 12,
+    paddingTop: 5,
+  },
+});
