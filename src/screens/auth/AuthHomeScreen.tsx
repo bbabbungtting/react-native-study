@@ -48,10 +48,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  imageContainer: {flex: 1, alignItems: 'center'},
+  imageContainer: {flex: 2, alignItems: 'center'},
   image: {width: 300, height: '100%'},
   buttonContainer: {
-    flex: 2,
+    flex: 1,
     alignItems: 'center',
     paddingHorizontal: 30,
     gap: 10,

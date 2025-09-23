@@ -26,7 +26,7 @@ const AuthStack = createStackNavigator({
     AuthHome: {
       screen: AuthHomeScreen,
       options: {
-        //headerShown: false, // 헤더 숨김
+        headerShown: false, // 헤더 숨김
       },
     },
     Login: {
