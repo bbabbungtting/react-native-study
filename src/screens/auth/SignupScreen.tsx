@@ -1,12 +1,14 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef} from 'react';
 import {SafeAreaView, View, StyleSheet, TextInput} from 'react-native';
 
 import CustomButton from '@/components/CustomButton';
 import InputField from '@/components/InputField';
 import useForm from '@/hooks/useForm';
 import {validateSignup} from '@/utils/validation';
+import useAuth from '@/hooks/queries/useAuth';
 
 export default function SignupScreen() {
+  const {signupMutation, loginMutation} = useAuth();
   const passwordRef = useRef<TextInput | null>(null);
   const passwordConfirmRef = useRef<TextInput | null>(null);
 
@@ -16,7 +18,12 @@ export default function SignupScreen() {
   });
 
   const handleSubmit = () => {
-    console.log('signup.values', signup.values);
+    const {email, password} = signup.values;
+
+    signupMutation.mutate(
+      {email, password},
+      {onSuccess: () => loginMutation.mutate({email, password})},
+    );
   };
 
   return (

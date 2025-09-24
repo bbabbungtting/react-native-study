@@ -6,8 +6,10 @@ import InputField from '@/components/InputField';
 import useForm from '@/hooks/useForm';
 import {validateLogin} from '@/utils/validation';
 import {TextInput} from 'react-native-gesture-handler';
+import useAuth from '@/hooks/queries/useAuth';
 
 export default function LoginScreen() {
+  const {loginMutation} = useAuth();
   const passwordRef = useRef<TextInput | null>(null);
   const logIn = useForm({
     initialValue: {email: '', password: ''},
@@ -15,7 +17,7 @@ export default function LoginScreen() {
   });
 
   const handleSummit = () => {
-    console.log('login.values', logIn.values);
+    loginMutation.mutate(logIn.values);
   };
 
   return (

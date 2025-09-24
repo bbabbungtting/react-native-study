@@ -1,10 +1,11 @@
-import AuthNavigations from './AuthNavigation';
+import AuthNavigation from './AuthNavigation';
 import DrawerNavigation from './DrawerNavigation';
+import useAuth from '@/hooks/queries/useAuth';
 
 function RootNavigation() {
-  const isLogin = false;
+  const {isLogin} = useAuth();
 
-  return <>{isLogin ? <DrawerNavigation /> : <AuthNavigations />}</>;
+  return <>{isLogin ? <DrawerNavigation /> : <AuthNavigation />}</>;
 }
 
 export default RootNavigation;

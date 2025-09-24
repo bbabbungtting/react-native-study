@@ -1,3 +1,4 @@
+import useAuth from '@/hooks/queries/useAuth';
 import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
@@ -16,6 +17,8 @@ import {
 export default function CustomDrawerContent(
   props: DrawerContentComponentProps,
 ) {
+  const {auth} = useAuth();
+
   return (
     <SafeAreaView style={styles.container}>
       <DrawerContentScrollView
@@ -29,7 +32,9 @@ export default function CustomDrawerContent(
               style={styles.userImage}
             />
           </View>
-          <Text style={styles.nickName}>닉네임</Text>
+          <Text style={styles.nickName}>
+            {auth.nickname} {auth.id}
+          </Text>
         </Pressable>
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
