@@ -3,6 +3,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import {SafeAreaView, Text, StyleSheet} from 'react-native';
 import {FeedStackParamList} from '@/types/navigation';
+import {FlatList} from 'react-native-gesture-handler';
 
 type Navigation = StackNavigationProp<FeedStackParamList>;
 

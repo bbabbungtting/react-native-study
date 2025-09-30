@@ -8,6 +8,7 @@ import {colors} from '@/constants/color';
 import CustomDrawerContent from '@/components/CustomDrawerContent';
 import {MainDrawerParamList} from '@/types/navigation';
 import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
+import {SettingStack} from './SettingNavigation';
 
 type DrawerIconName = 'map' | 'book' | 'calendar';
 
@@ -26,6 +27,9 @@ function DrawerIcons(routeName: keyof MainDrawerParamList, focused: boolean) {
     case 'Calendar': {
       iconName = 'calendar';
       break;
+    }
+    default: {
+      iconName = 'calendar';
     }
   }
 
@@ -93,6 +97,16 @@ const MainDrawer = createDrawerNavigator({
       options: {
         title: '캘린더',
         headerLeft: () => <DrawerButton />,
+      },
+    },
+    Setting: {
+      screen: SettingStack,
+      options: {
+        title: '설정',
+        headerShown: false,
+        drawerItemStyle: {
+          height: 0,
+        },
       },
     },
   },
